@@ -1,3 +1,5 @@
+This project was developed as a code challange based on some user requirements provided by an organisation. The project helps to manage and track the payments made by patients of a Hospital.
+
 -----------------  Brief Setup Steps  -----------------------------------
 
 1. Create a database in SQL Server and name it stnicholas-payment-db.
