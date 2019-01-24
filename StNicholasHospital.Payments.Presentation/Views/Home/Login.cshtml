@@ -1,0 +1,63 @@
+﻿@model StNicholasHospital.Payments.Presentation.Models.LoginModel
+
+@{
+    Layout = "_HomeLayout.cshtml";
+}
+
+<h2>Login Here</h2>
+
+<div class="row">
+    <div class="col-md-5 col-md-push-6 col-md-offset-1">
+        <div class="panel panel-default">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="panel-heading">
+                    <h3 class="panel-title">Enter your username and password</h3>
+                </div>
+
+                <fieldset class="panel-body">
+                    <legend></legend>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+                    <div class="panel-footer">
+                        <input type="submit" value="Login Here" class="btn btn-default" />
+                    </div>
+             }
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-pull-6">
+        <p>
+            All user activity on ST NICHOLAS HOSPITAL PAYMENTS APP is logged.
+            Logout when leaving your desk to prevent unauthorised access.
+            You will be automatically logged out after some period of inactivity.
+        </p>
+        <ul>
+            <li>Please enter your username and password here.</li>
+            <li>
+                If your password has expired, you will be redirected to the
+                <a href="#">Change Password Page</a> to change your password.
+            </li>
+            <li>If you cannot remember your password, contact your administrator.</li>
+            <li>Or, simply fill out the form on the <a href="#">Password Reset Page</a></li>
+            <li>A password reset request will be sent to your administrator.</li>
+            <li>Your administrator may confirm by phone to know if you really want a reset and why.</li>
+        </ul>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

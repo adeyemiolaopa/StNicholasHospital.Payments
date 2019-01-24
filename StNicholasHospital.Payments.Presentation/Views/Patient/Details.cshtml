@@ -1,0 +1,126 @@
+﻿@model StNicholasHospital.Payments.Presentation.Models.MultipleModelInOneView 
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "_PatientLayout.cshtml";
+}
+
+<h2>Patient details</h2>
+
+<div>
+    <h4>Patient personal details</h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Patient.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Patient.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Patient.Firstname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Patient.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Patient.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Patient.Lastname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Patient.PhoneNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Patient.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Patient.PhoneNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Patient.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Patient.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Patient.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <h4>Patient list of payments</h4>
+    <p>
+        @Html.ActionLink("Create New Payment", "Create", "Payment", new { id = Model.Patient.PatientID }, null)
+    </p>
+    <p>
+        @Html.ActionLink("Calculate Patient's Payment", "Calculate", "Payment", new { id = Model.Patient.PatientID }, null)
+    </p>
+    
+
+    <table class="table">
+        <tr>
+            <th>
+                Payment ID
+            </th>
+            @*<th>
+                Patient ID
+            </th>*@
+            <th>
+                Description
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                EntryDate
+            </th>
+            <th>
+                CreatedBy
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Payments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentID)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.PatientID)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PaymentID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PaymentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PaymentID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

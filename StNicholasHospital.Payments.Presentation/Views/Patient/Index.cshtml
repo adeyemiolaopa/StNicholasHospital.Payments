@@ -1,0 +1,64 @@
+﻿@model IEnumerable<StNicholasHospital.Payments.Domain.Dto.PatientDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "_PatientLayout.cshtml";
+}
+
+<h2>A list of patients</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Firstname
+        </th>
+        <th>
+            Lastname
+        </th>
+        <th>
+            PhoneNo
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            EntryDate
+        </th>
+        <th>
+            CreatedBy
+        </th>
+       <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.PatientID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.PatientID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PatientID })
+        </td>
+    </tr>
+}
+
+</table>

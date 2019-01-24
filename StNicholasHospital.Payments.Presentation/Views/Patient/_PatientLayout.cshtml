@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section topMenu {
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Staff Members", "Index", "Staff")</li>
+        <li>@Html.ActionLink("New Patient", "Create", "Patient")</li>
+        <li>@Html.ActionLink("Patients", "Index", "Patient")</li>
+    </ul>
+}
+
+@RenderBody()

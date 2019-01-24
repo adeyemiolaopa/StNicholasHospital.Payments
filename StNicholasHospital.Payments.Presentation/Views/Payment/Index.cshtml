@@ -1,0 +1,58 @@
+﻿@model IEnumerable<StNicholasHospital.Payments.Domain.Dto.PaymentDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "_PaymentLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Payment ID
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Entry Date
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Created By
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { paymentID = item.PaymentID }) |
+            @Html.ActionLink("Details", "Details", new { paymentID = item.PaymentID }) |
+            @Html.ActionLink("Delete", "Delete", new { paymentID = item.PaymentID })
+        </td>
+    </tr>
+}
+
+</table>
