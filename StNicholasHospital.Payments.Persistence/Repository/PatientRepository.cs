@@ -121,16 +121,7 @@ namespace StNicholasHospital.Payments.Persistence.Repository
                     }
                 }
             }
-
-            Stack<int> stack = new Stack<int>();
-            stack.Push(7);
-
-            Queue<string> queue = new Queue<string>();
-            queue.Enqueue("test");
-
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            dic.Add("item1", "test");
-
+       
             return patients;
         }
 
